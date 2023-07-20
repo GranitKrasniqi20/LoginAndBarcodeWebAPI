@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoginAndBarcodeWebAPI", "LoginAndBarcodeWebAPI\LoginAndBarcodeWebAPI.csproj", "{26692301-6E72-4A1C-B41C-6F4257F00F60}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{26692301-6E72-4A1C-B41C-6F4257F00F60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26692301-6E72-4A1C-B41C-6F4257F00F60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26692301-6E72-4A1C-B41C-6F4257F00F60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26692301-6E72-4A1C-B41C-6F4257F00F60}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9274A24D-DC7E-46B8-9D2C-60FA49D96424}
+	EndGlobalSection
+EndGlobal
