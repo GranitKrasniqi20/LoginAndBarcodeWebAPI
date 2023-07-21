@@ -1,11 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace LoginAndBarcodeWebAPI.Models
+namespace LoginAndBarcodeWebAPI.DTO
 {
-    public class User
+    public class RegisterResponse
     {
-        public int Id { get; set; }
-
         [Required]
         public string Username { get; set; }
 

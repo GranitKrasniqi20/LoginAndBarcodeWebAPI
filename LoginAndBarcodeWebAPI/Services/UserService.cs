@@ -21,7 +21,7 @@ namespace LoginAndBarcodeWebAPI.Services
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public Response RegisterUser(User model)
+        public Response RegisterUser(RegisterResponse model)
         {
             User user = new User();
             user.Username = model.Username;
@@ -30,8 +30,8 @@ namespace LoginAndBarcodeWebAPI.Services
             user.ProjectId = model.ProjectId;
             _dbContext.Users.Add(user);
             _dbContext.SaveChanges();
-            user.Password = user.Password = "";//Dont return passwords hash.
-            return user.Id > 0 ? Result.Success(user, "Success") : Result.Fail("Problem during user creation");
+            model.Password = user.Password = "";//Dont return passwords hash.
+            return user.Id > 0 ? Result.Success(model, "Success") : Result.Fail("Problem during user creation");
         }
 
         public Response LoginUser(string username, string password)

@@ -5,7 +5,7 @@ namespace LoginAndBarcodeWebAPI.Services.Contracts
 {
     public interface IUserService
     {
-        public Response RegisterUser(User model);
+        public Response RegisterUser(RegisterResponse model);
 
         public Response LoginUser(string username, string password);
     }

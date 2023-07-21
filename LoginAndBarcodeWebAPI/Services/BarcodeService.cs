@@ -24,7 +24,13 @@ namespace LoginAndBarcodeWebAPI.Services
             barcode.Timestamp = DateTime.Now;   
             _dbContext.Add(barcode);
             _dbContext.SaveChanges();
-            return barcode.Id > 0 ? Result.Success(barcode, "Success") : Result.Fail("Problem during barcode creation");
+
+            var result = new BarcodeResponse
+            {
+                Text = barcode.Text,
+                Timestamp = DateTime.Now,
+            };
+            return barcode.Id > 0 ? Result.Success(result, "Success") : Result.Fail("Problem during barcode creation");
 
         }
     }
