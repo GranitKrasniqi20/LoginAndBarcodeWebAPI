@@ -6,6 +6,8 @@ namespace LoginAndBarcodeWebAPI.Models
     {
         public int Id { get; set; }
 
+        public int? RoleId { get; set; }
+
         [Required]
         public string Username { get; set; }
 

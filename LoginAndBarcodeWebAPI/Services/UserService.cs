@@ -1,4 +1,5 @@
 ﻿using LoginAndBarcodeWebAPI.DTO;
+using LoginAndBarcodeWebAPI.Enum;
 using LoginAndBarcodeWebAPI.Models;
 using LoginAndBarcodeWebAPI.Services.Contracts;
 using LoginAndBarcodeWebAPI.Utilities;
@@ -39,7 +40,9 @@ namespace LoginAndBarcodeWebAPI.Services
             var user = AuthenticateUser(username, password);
             if (user.Id > 0)
             {
-                var token = GenerateJsonWebToken(user);
+                var token = user.RoleId == (int)UserRoleEnum.Administrator ? GenerateJsonWebToken(user, "Administrator")
+                                                                           : GenerateJsonWebToken(user);
+
                 if (token == null || token == "")
                 {
                     Result.Fail("Token not created!");
@@ -59,7 +62,7 @@ namespace LoginAndBarcodeWebAPI.Services
             return Result.Fail("Wrong credentials!");
         }
 
-        private string GenerateJsonWebToken(User user)
+        private string GenerateJsonWebToken(User user, string role = "")
         {
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
@@ -68,7 +71,8 @@ namespace LoginAndBarcodeWebAPI.Services
             {
                 new Claim(JwtRegisteredClaimNames.Sub, Guid.NewGuid().ToString()),
                 new Claim(JwtRegisteredClaimNames.Name, user.Username),
-                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
+                new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+                new Claim("Role", role),
             };
 
             var datetimeNow = DateTime.Now;

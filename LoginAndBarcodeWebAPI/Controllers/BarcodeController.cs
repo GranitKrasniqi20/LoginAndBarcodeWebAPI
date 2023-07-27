@@ -18,7 +18,7 @@ namespace LoginAndBarcodeWebAPI.Controllers
 
 
         [Route("registerBarcode")]
-        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Policy = "AdminOnly")]
         [HttpPost]
         public IActionResult RegisterBarcode([FromBody] string barcodeText)
         {
